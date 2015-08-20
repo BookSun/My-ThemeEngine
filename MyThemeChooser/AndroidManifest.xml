@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ # Copyright (C) 2010, T-Mobile USA, Inc.
+ #
+ # Licensed under the Apache License, Version 2.0 (the "License");
+ # you may not use this file except in compliance with the License.
+ # You may obtain a copy of the License at
+ #
+ #      http://www.apache.org/licenses/LICENSE-2.0
+ #
+ # Unless required by applicable law or agreed to in writing, software
+ # distributed under the License is distributed on an "AS IS" BASIS,
+ # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pluto="http://www.w3.org/2001/pluto.html"
+    package="com.lewa.themechooser"
+    android:versionCode="6"
+    android:versionName="0.2">
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="com.lewa.permission.CHANGE_THEME" />
+    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.DELETE_PACKAGES" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER_COMPONENT" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.BIND_WALLPAPER" />
+    <uses-permission android:name="android.permission.REBOOT" />
+    <uses-permission android:name="android.permission.DEVICE_POWER" />
+    <uses-permission android:name="android.permission.READ_FRAME_BUFFER" />
+    <application
+        android:name=".ThemeApplication"
+        android:allowBackup="false"
+        android:icon="@drawable/com_lewa_themechooser"
+        android:label="@string/app_name"
+        android:largeHeap="@bool/config_enable_large_heap"
+        android:theme="@style/Theme.ActionBarV5Style"
+        pluto:isThemeable="true">
+<!--        android:theme="@style/Theme"-->
+        <activity
+            android:name=".ThemeChooser"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|keyboardHidden"
+            style="@style/Theme.ActionBarV5Style"
+            android:label="@string/app_title"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
+
+            <intent-filter>
+                <action android:name="com.lewa.intent.action.SET_THEME" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="lewa.intent.action.PREVIEW_THEME" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PICK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.lewa.cursor.dir/theme" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ThemeInfoActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow"
+            pluto:handleThemeConfigChanges="true"></activity>
+        <activity
+            android:name=".ModifyWallpaperActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="true"
+            android:label="@string/modify_wallpaper"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow"
+            pluto:handleThemeConfigChanges="true"></activity>
+        <activity
+            android:name=".preview.slide.local.PreviewIconsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow"
+            android:windowActionBarOverlay="true"
+            pluto:handleThemeConfigChanges="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".preview.slide.local.LocalPreviewIconsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow"
+            android:windowActionBarOverlay="true"
+            pluto:handleThemeConfigChanges="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.lewa.cursor.dir/theme" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".preview.slide.online.PreviewOnlineIconsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow"
+            pluto:handleThemeConfigChanges="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.lewa.lwt.action" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.lewa.downloadlwt.action" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.lewa.downloading.action" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.lewa.cursor.dir/theme" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".custom.preview.online.OnLineLiveWallpaperPreview"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.lewa.lwt.action" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".custom.preview.online.OnLineSystemAppPreivew"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.lewa.lwt.action" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".custom.preview.online.OnLineDeskTopWallpaperPreview"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.lewa.lwt.action" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.lewa.downloadwallpaper.action" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".custom.preview.online.OnLineFontsPreview"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.lewa.lwt.action" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".custom.preview.online.OnLineIconPreview"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.lewa.lwt.action" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".custom.preview.online.OnLineLockScreenStylePreview"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.lewa.lwt.action" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".custom.preview.online.OnLineLockScreenWallpaperPreview"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.lewa.lwt.action" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.lewa.downloadlockwallpaper.action" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".custom.main.LockScreenWallpaper"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/theme_model_lockwallpaper"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <action android:name="android.intent.action.SET_WALLPAPER" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".custom.main.LockScreenStyle"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".custom.main.Icon"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".custom.main.Fonts"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".custom.main.DeskTopWallpaper"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/com_lewa_themechooser"
+            android:label="@string/theme_model_wallpaper"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <action android:name="android.intent.action.SET_WALLPAPER" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".custom.main.SystemApp"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".custom.preview.local.LockScreenStylePreview"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow"></activity>
+        <activity
+            android:name=".custom.preview.local.SystemAppPreview"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow"
+            pluto:handleThemeConfigChanges="true"></activity>
+        <activity
+            android:name=".custom.preview.local.DeskTopWallpaperPreview"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.lewa.cursor.dir/deskicon" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".custom.preview.local.FontsPreview"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow"></activity>
+        <activity
+            android:name=".custom.preview.local.IconPreview"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow"></activity>
+        <activity
+            android:name=".custom.preview.local.LockScreenWallpaperPreview"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_title"
+            android:screenOrientation="portrait"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.lewa.cursor.dir/lockicon" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".custom.main.LiveWallpaper"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/com_lewa_themechooser"
+            android:label="@string/live_wallpaper"
+            android:screenOrientation="portrait"
+            android:theme="@lewa:style/V5.Theme.Holo.Light">
+            <intent-filter>
+<!--                <action android:name="android.intent.action.SET_WALLPAPER" />
+
+                <category android:name="android.intent.category.DEFAULT" />-->
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".custom.preview.local.LiveWallpaperPreview"
+            android:configChanges="orientation|screenSize"
+            android:icon="@drawable/ic_launcher_live_wallpaper"
+            android:screenOrientation="portrait"
+            android:theme="@style/Preview"
+            android:uiOptions="splitActionBarWhenNarrow" />
+
+        <activity
+            android:name=".WallpaperSelector"
+            android:configChanges="orientation|screenSize"
+            android:icon="@drawable/ic_launcher_live_wallpaper"
+            android:label="@string/wallpaper_selector"
+            android:screenOrientation="portrait"
+            android:theme="@lewa:style/V5.Theme.Holo.Light">
+            <intent-filter>
+                <action android:name="com.lewa.action.SET_WALLPAPER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".receiver.ThemeFileReceiver">
+            <intent-filter>
+                <action android:name="com.lewa.intent.action.THEME_FILE_ADDED" />
+                <action android:name="com.lewa.intent.action.THEME_FILE_CHANGED" />
+
+                <data android:mimeType="application/lewa-theme" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.lewa.intent.action.THEME_DOWNLOADED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.lewa.intent.action.THEME_DOWNLOADED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".receiver.ThemeInstallService"
+            android:exported="true"></service>
+
+        <receiver android:name=".receiver.ShutdownReceiver">
+            <intent-filter>
+
+                <!-- <action android:name="android.intent.action.ACTION_SHUTDOWN" /> -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receiver.DownloadCompleteReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receiver.VerifyThemesCompletedReceiver">
+            <intent-filter>
+                <action android:name="com.lewa.theme.VerifyThemesCompleted" />
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.MEDIA_UNMOUNTABLE" />
+                <action android:name="android.intent.action.MEDIA_UNSHARED" />
+                <action android:name="android.intent.action.MEDIA_BAD_REMOVAL" />
+                <action android:name="android.intent.action.MEDIA_EJECT" />
+
+                <data android:scheme="file" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receiver.ApplyThemeForOtherAppReceiver">
+            <intent-filter>
+                <action android:name="com.lewa.theme.applyThemeForOtherApp" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receiver.ApplyLockWallpaperReceiver">
+            <intent-filter>
+                <action android:name="com.lewa.theme.action.applylockwallpaper" />
+
+                <data android:scheme="content" />
+                <data android:mimeType="image/jpeg" />
+                <data android:mimeType="image/png" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.lewa.themechooser.appwidget.OnekeyWallpaperShortcut"
+            android:icon="@drawable/onekey_wallpaper_normal"
+            android:label="@string/onekey_wallpaper"
+            android:theme="@android:style/Theme.Translucent">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name="com.lewa.themechooser.appwidget.provider.OnekeyFontProvider"
+            android:enabled="@bool/config_onekeyfont_widget_enabled"
+            android:icon="@drawable/onekey_font_normal"
+            android:label="@string/onekey_font">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/onekey_font_provider" />
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.lewa.themechooser.appwidget.provider.OnekeyThemeProvider"
+            android:enabled="@bool/config_onekeytheme_widget_enabled"
+            android:icon="@drawable/onekey_theme_normal"
+            android:label="@string/onekey_theme">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/onekey_theme_provider" />
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.lewa.themechooser.appwidget.receiver.OnekeyWidgetReceiver">
+            <intent-filter>
+                <action android:name="com.lewa.themechooser.OnekeyWallpaper" />
+                <action android:name="com.lewa.themechooser.OnekeyFont" />
+                <action android:name="com.lewa.themechooser.OnekeyTheme" />
+            </intent-filter>
+        </receiver>
+
+        <!--<receiver android:name="com.lewa.themechooser.appwidget.receiver.WallpaperChangedReceiver">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.WALLPAPER_CHANGED" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+
+        <service android:name=".appwidget.service.WallpaperDownloadService">
+            <intent-filter>
+                <action android:name="com.lewa.themechooser.OnekeyWallpaperDownloadService" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".appwidget.service.WallpaperChangeService">
+            <intent-filter>
+                <action android:name="com.lewa.themechooser.OnekeyWallpaperChangeService" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".appwidget.service.FontChangeService">
+            <intent-filter>
+                <action android:name="com.lewa.themechooser.OnekeyFontChangeService" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".appwidget.service.ThemeChangeService">
+            <intent-filter>
+                <action android:name="com.lewa.themechooser.OnekeyThemeChangeService" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="com.lewa.themechooser.appwidget.CoveringPageActivity"
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <provider
+            android:name=".provider.PackageResourcesProvider"
+            android:authorities="com.lewa.themechooser.packageresources"
+            android:exported="true" />
+
+        <provider
+            android:name="com.lewa.themechooser.newmechanism.FileContentProvider"
+            android:authorities="com.lewa.themechooser.fileprovider"
+            android:exported="true" />
+    </application>
+
+</manifest>

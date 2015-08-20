@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="2dp">
+
+    <com.lewa.themechooser.widget.ImageViewCheck
+        android:id="@+id/thumbnail"
+        android:layout_width="@dimen/thumbnail_deskwallpaper_width"
+        android:layout_height="@dimen/thumbnail_deskwallpaper_height"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|bottom"
+        android:background="@drawable/text_view"
+        android:paddingLeft="6dip"
+        android:textColor="#FFFFFF" />
+
+    <LinearLayout
+        android:id="@+id/check_icon"
+        android:layout_width="@dimen/thumbnail_deskwallpaper_width"
+        android:layout_height="@dimen/thumbnail_deskwallpaper_height"
+        android:layout_gravity="center"
+        android:background="@drawable/grid_selected"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <com.lewa.themechooser.widget.LewaImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bg_view_selected" />
+    </LinearLayout>
+
+</FrameLayout>

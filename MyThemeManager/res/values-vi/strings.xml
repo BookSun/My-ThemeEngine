@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">"Không gian lưu trữ chủ đề"</string>
+  <string name="permlab_access_DrmThemeResources">"Nguồn chủ đề lưu trữ nhận sự bảo vệ DRM"</string>
+  <string name="permdesc_access_DrmThemeResources">"Nguồn chủ đề cho phép ứng dụng lưu trữ nhận sự bảo vệ của DRM"</string>
+  <string name="permlab_set_theme">"Cài đặt toàn bộ chủ đề"</string>
+  <string name="permdesc_set_theme">"Cho phép ứng dụng sửa chữa toàn bộ chủ đề hệ thống"</string>
+  <string name="apply_font_failed">"Áp dụng phông chữ thất bại"</string>
+</resources>

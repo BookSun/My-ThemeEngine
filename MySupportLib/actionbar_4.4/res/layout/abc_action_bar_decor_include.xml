@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+     android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+    >
+    <lewa.support.v7.internal.widget.ActionBarContainer
+        android:id="@+id/action_bar_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ActionBar.Solid">
+
+        <lewa.support.v7.internal.widget.ActionBarView
+            android:id="@+id/action_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.ActionBar.Solid" />
+
+        <lewa.support.v7.lewa.v5.LewaActionBarContextView
+            android:id="@+id/action_context_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            style="@style/Widget.AppCompat.ActionMode" />
+    </lewa.support.v7.internal.widget.ActionBarContainer>
+
+    <lewa.support.v7.lewa.v5.BlurTargetView
+        android:id="@id/action_bar_activity_content"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:foregroundGravity="fill_horizontal|top"
+        android:foreground="?android:attr/windowContentOverlay"
+	    android:layout_below="@+id/action_bar_container" 
+	     />
+</LinearLayout>
+        <View android:id="@+id/v_root_mask_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:focusable="true"
+        android:clickable="true"
+        android:visibility="gone"/>
+    <FrameLayout
+        android:id="@+id/split_contantainer"
+        android:layout_width="fill_parent"
+        android:layout_height="544dip"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"  
+        >
+        
+         <lewa.support.v7.lewa.v5.LewaActionBarContainer
+        android:id="@+id/split_action_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ActionBar.Solid"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"  />
+        
+    </FrameLayout>
+   
+
+</merge>

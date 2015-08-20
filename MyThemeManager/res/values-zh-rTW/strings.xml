@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">"主題存儲空間"</string>
+    <string name="permlab_access_DrmThemeResources">"存取受DRM保護的主題資源"</string>
+    <string name="permdesc_access_DrmThemeResources">"允許應用程序存取受DRM保護的主題資源"</string>
+    <string name="permlab_set_theme">"設置全局主題"</string>
+    <string name="permdesc_set_theme">"允許應用程序改變系統的全局主題"</string>
+    <string name="apply_font_failed">應用字體失敗</string>
+</resources>

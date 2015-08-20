@@ -1,0 +1,5 @@
+<resources>
+
+    <string name="app_name">SharedPackage</string>
+    <string name="fixed_line">固話</string>
+</resources>

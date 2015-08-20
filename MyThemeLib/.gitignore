@@ -1,0 +1,7 @@
+*.properties
+.classpath
+.project
+assets
+bin
+gen
+out

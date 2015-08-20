@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+        <GridView
+                android:id="@+id/gridview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:fadingEdge="none"
+                android:horizontalSpacing="@dimen/theme_grid_spacing"
+                android:numColumns="3"
+                android:paddingLeft="@dimen/theme_grid_padding"
+                android:paddingRight="@dimen/theme_grid_padding"
+                android:paddingTop="@dimen/theme_grid_paddingTop"
+                android:scrollbarStyle="outsideOverlay"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="@dimen/theme_grid_spacing"/>
+
+        <LinearLayout
+                android:id="@+id/online_loading"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
+                android:background="@color/loading_background"
+                android:visibility="gone">
+
+            <ProgressBar
+                    android:id="@+id/load_more_progressbar"
+                    style="@android:style/Widget.ProgressBar.Small.Inverse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    android:id="@+id/load_more_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-2dip"
+                    android:gravity="center_vertical"
+                    android:text="@string/theme_loading_more"/>
+        </LinearLayout>
+    </FrameLayout>
+</merge>

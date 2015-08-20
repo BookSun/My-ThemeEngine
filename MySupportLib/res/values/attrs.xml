@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SpectrumVisualizer">
+        <attr name="alpha_width" format="integer" />
+        <attr name="sliding_dot_bar" format="reference" />
+        <attr name="sliding_panel" format="reference" />
+        <attr name="sliding_shadow_dot_bar" format="reference" />
+        <attr name="update_enable" format="boolean" />
+        <attr name="care_streamactive" format="boolean" />
+        <attr name="symmetry" format="boolean" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/local_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="55dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/theme_local_end_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dip"
+        android:layout_marginLeft="12dip"
+        android:layout_marginRight="12dip"
+        android:layout_marginTop="8dip"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/end_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="@string/theme_local_end_view"
+            android:textColor="#5c5c5c"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/local_theme_grid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="@dimen/theme_grid_spacing"
+        android:numColumns="3"
+        android:paddingLeft="@dimen/theme_grid_padding"
+        android:paddingRight="@dimen/theme_grid_padding"
+        android:paddingTop="@dimen/theme_grid_paddingTop"
+        android:scrollbarStyle="outsideOverlay"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/theme_grid_spacing" />
+</LinearLayout>

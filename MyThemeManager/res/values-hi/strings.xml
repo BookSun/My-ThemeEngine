@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">थीम्स केलिए स्थान</string>
+  <string name="permlab_access_DrmThemeResources">"DRM से सुरक्षित थीम्स संसाधन का उपयोग और रक्षित करें"</string>
+  <string name="permdesc_access_DrmThemeResources">"अनुप्रयोग को DRM से सुरक्षित थीम्स संसाधन का उपयोग और रक्षित करने की अनुमति दें"</string>
+  <string name="permlab_set_theme">"समग्र केलिए थीम्स सेट"</string>
+  <string name="permdesc_set_theme">"अनुप्रयोग को सिस्टीम के समग्र थीम्स बदलने की अनुमति दें"</string>
+  <string name="apply_font_failed">अक्षर का उपयोग करना विफ़ल</string>
+</resources>

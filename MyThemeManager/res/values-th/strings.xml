@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">พื้นที่จัดเก็บธีมส์</string>
+  <string name="permlab_access_DrmThemeResources">เข้าถึงการป้องกันสื่อ DRM</string>
+  <string name="permdesc_access_DrmThemeResources">อนุญาติแอปพลิเคชั่นเข้าถึงการป้องกันสื่อ DRM ของแพคเกจธีมส์</string>
+  <string name="permlab_set_theme">ตั้งค่าธีมส์ที่ใช้ทั่วโลก</string>
+  <string name="permdesc_set_theme">อนุญาติแอปพลิเคชั่นในการเปลี่ยนธีมส์แสดงผลของโทรศัพท์</string>
+  <string name="apply_font_failed">การใช้ตัวอักษรล้มเหลว</string>
+</resources>

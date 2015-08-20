@@ -1,0 +1,22 @@
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE_TAGS := optional
+LOCAL_SRC_FILES := $(call all-java-files-under, src)
+LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
+LOCAL_JNI_SHARED_LIBRARIES := liblewa_imageutils
+LOCAL_JNI_SHARED_LIBRARIES += liblewa_shell
+LOCAL_MANIFEST_PACKAGE_NAME := com.lewa.support
+LOCAL_PACKAGE_NAME := LewaSupport
+LOCAL_CERTIFICATE  := platform
+include $(BUILD_PACKAGE)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE_TAGS := optional
+LOCAL_SRC_FILES := $(call all-java-files-under, src)
+LOCAL_INTERMEDIATE_SOURCES += APPS/LewaSupport_intermediates/src/com/lewa/support/R.java
+LOCAL_MODULE:= LewaSupport
+include $(BUILD_STATIC_JAVA_LIBRARY)
+
+# Build sub-modules
+include $(call all-makefiles-under, $(LOCAL_PATH))
